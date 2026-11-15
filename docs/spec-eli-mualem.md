@@ -125,7 +125,7 @@ Background `--plaster-2`. Desktop: statement in columns 1–5, `position: sticky
 ### 7. Customers `#customers`
 Background `--plaster`. `.dim` label `05 · לקוחות`. Desktop: quote in columns 1–6, two video cards side by side in columns 8–12.
 - Quote: Karantina 700 `clamp(44px, 6vw, 96px)`: `בעבודה עברית רואים גם את מה שלא בעין.` Below, 15px `--ink-2`, max 40ch: `כך כתבנו אחרי ההמלצה שצילמה לנו מיטי, לקוחה לקוית ראייה. בשבילה זה היה שיפוץ. בשבילנו זו שליחות.`
-- Video card = one `<a target="_blank" rel="noopener">`: poster wrapper aspect 4/5 `.wipe`, with a 56px `--blue` circle (radius 50% allowed here) centred, containing a white CSS triangle pointing left-to-right; under the poster 12px gap: 15px weight 500 text, then label `צפו בהמלצה באינסטגרם` in `--blue` with underline on hover.
+- Video card = one `<a target="_blank" rel="noopener">`: poster wrapper aspect 4/5 `.wipe`, with a 48px `--blue` circle (radius 50% allowed here) at the bottom-start corner, inset 12px, so it never covers a face, containing a white CSS triangle pointing left-to-right; under the poster 12px gap: 15px weight 500 text, then label `צפו בהמלצה באינסטגרם` in `--blue` with underline on hover.
   1. poster `testimonial-miti` (alt `מיטי, לקוחה, מצולמת במרפסת ביתה`), href `https://www.instagram.com/reel/DKreQvEMrpu/`, text `מיטי מספרת על השירות, הסבלנות וההתחשבות בכל פרט.`
   2. poster `testimonial-kitchen` (alt `לקוחה במטבח המשופץ שלה`), href `https://www.instagram.com/reel/DdRNa7LMDyl/`, text `לקוחה מספרת מהמטבח החדש. בסוף הסרטון רואים את כל המהפך.`
 - Mobile: quote, then cards two-up.
