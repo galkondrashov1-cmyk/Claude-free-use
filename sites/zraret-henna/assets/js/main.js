@@ -29,6 +29,41 @@
     if (e.key === 'Escape' && !menu.hidden) setMenu(false, true);
   });
 
+  /* Arch rims: redraw each rim as a true 10px offset of the photo's arch,
+     so the gap stays even at the shoulders at every size (fallback: the static path) */
+  function bez(a, b, c, d, t) { var u = 1 - t; return u * u * u * a + 3 * u * u * t * b + 3 * u * t * t * c + t * t * t * d; }
+  function fitRim(arch) {
+    var r = arch.getBoundingClientRect(), W = r.width, H = r.height, o = 10;
+    if (!W) return;
+    var snap = function (v, base) { return Math.floor(base + v) + 0.5 - base; };
+    var xl = snap(-o, r.left), xr = snap(W + o, r.left), yb = snap(H + o, r.top), ly = snap(0.46 * H - o, r.top);
+    var X = [0.07 * W, 0, 0.02 * W, 0.5 * W], Y = [0.46 * H, 0.37 * H, 0.15 * H, 0], pts = [], prev = null;
+    for (var i = 0; i <= 64; i++) {
+      var t = i / 64, e = 1e-3, t0 = Math.max(0, t - e), t1 = Math.min(1, t + e);
+      var dx = bez(X[0], X[1], X[2], X[3], t1) - bez(X[0], X[1], X[2], X[3], t0);
+      var dy = bez(Y[0], Y[1], Y[2], Y[3], t1) - bez(Y[0], Y[1], Y[2], Y[3], t0), len = Math.hypot(dx, dy);
+      var q = [bez(X[0], X[1], X[2], X[3], t) + o * dy / len, bez(Y[0], Y[1], Y[2], Y[3], t) - o * dx / len];
+      if (q[1] <= ly) {
+        if (!pts.length && prev) { var k = (ly - prev[1]) / (q[1] - prev[1]); pts.push([prev[0] + k * (q[0] - prev[0]), ly]); }
+        pts.push(q);
+      }
+      prev = q;
+      if (t === 1) { var s = (W / 2 - q[0]) / dx; pts.push([W / 2, q[1] + s * dy]); }
+    }
+    var f = function (p) { return p[0].toFixed(2) + ',' + p[1].toFixed(2); };
+    var left = pts.map(f), right = pts.slice(0, -1).reverse().map(function (p) { return f([W - p[0], p[1]]); });
+    var d = 'M' + [f([xl, yb]), f([xl, ly])].concat(left, right, [f([xr, ly]), f([xr, yb])]).join(' L') + ' Z';
+    arch.querySelectorAll(':scope > svg').forEach(function (svg) {
+      svg.setAttribute('viewBox', (-o) + ' ' + (-o) + ' ' + (W + 2 * o) + ' ' + (H + 2 * o));
+      svg.querySelector('path').setAttribute('d', d);
+    });
+  }
+  var arches = document.querySelectorAll('.arch');
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(function (entries) { entries.forEach(function (en) { fitRim(en.target); }); });
+    arches.forEach(function (a) { ro.observe(a); });
+  }
+
   /* Signature reveal: the rise */
   var risers = document.querySelectorAll('[data-rise]');
   if ('IntersectionObserver' in window) {

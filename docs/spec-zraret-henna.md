@@ -70,7 +70,7 @@ Background `--henna`, `overflow: hidden`, `position: relative`. Desktop `min-hei
   - 56px below: Bellefair 22px `--gold`: `כשהמסורת פוגשת מודרניות קלאסית`
 - Arch A: `.arch` in columns 7–10, vertically centred. Image `arch-entrance`, alt `שער מרוקאי מואר ומאחוריו מסדרון וילונות ושטיחים`.
 - Arch B: `.arch`, width 230px, in columns 11–12, its top 190px lower than the top of arch A. Image `stage-bowl`, object-position center 60%, alt `קערת חינה מוזהבת על שולחן מול במת הטקס`.
-- Mobile: text block first (button full width, phone centred below it), then 48px gap, arch A at 74% of the container width at the start side, arch B at 40% width at the end side overlapping arch A's bottom by 96px. The backdrop sits behind the arches at `font-size: 40vw`. Hero padding-bottom 72px.
+- Mobile: text block first (button full width, phone centred below it), then 48px gap, arch A at 74% of the container width at the start side, arch B at 40% width at the end side overlapping arch A's bottom by 96px. The backdrop sits behind the arches at `font-size: 26vw` so the whole word fits. Hero padding-bottom 72px.
 
 ### 2. Intro (ivory)
 Background `--ivory`, padding-block `clamp(72px, 9vw, 128px)`. Centred column, max-width 900px, text centred (allowed here).
@@ -78,7 +78,7 @@ Background `--ivory`, padding-block `clamp(72px, 9vw, 128px)`. Centred column, m
 - 28px below: Bellefair `clamp(26px, 3.1vw, 44px)`, line-height 1.3, `--henna`: `כניסה מפוארת, מבואה שמרגישה כמו רחובות מרוקו, אווירת שוק, פינת טקס ואפריון. כל מה שצריך כדי שהאורחים שלכם יזכרו את הערב הזה.`
 
 ### 3. The evening `#evening` (ivory)
-Header: label in `--gold-deep`: `הערב, לפי הסדר`; h2 Bellefair `clamp(40px, 5.6vw, 88px)` `--henna`: `חמש תחנות, / ערב אחד.` 96px below, five stations.
+Header: label in `--gold-deep`: `הערב, לפי הסדר`; h2 Bellefair `clamp(38px, 5vw, 72px)` `--henna`: `חמש תחנות, / ערב אחד.` 96px below, five stations.
 
 Station layout (desktop, 12 columns): odd stations (01, 03, 05): arch in columns 1–4, text in columns 6–9 vertically centred against the arch, supporting image in columns 10–12 with margin-top 160px. Even stations (02, 04): mirrored: supporting image in columns 1–3 with margin-top 160px, text in columns 5–8, arch in columns 9–12. Between stations: a 1px × 72px `--gold` vertical line centred in the container, with 56px of space above and below.
 - Text block: numeral (Bellefair 96px, `--gold`, line-height 1), 8px below h3 (Bellefair `clamp(36px, 4vw, 60px)`, `--henna`), 16px below body (max 34ch, `--ink`).
@@ -95,13 +95,13 @@ Station layout (desktop, 12 columns): odd stations (01, 03, 05): arch in columns
 
 ### 4. Packages `#packages` (dark)
 `.khatam` band directly above. Background `--henna`, text `--ivory`. Desktop: main content in columns 1–8, two images in columns 10–12.
-- Label `--gold`: `חבילות`; h2 Bellefair `clamp(40px, 5.6vw, 88px)`: `מהכול כלול / ועד תפאורה בלבד.`; 24px below, lead (20px, `--ivory` 85%, max 46ch): `יש חבילות שכוללות הכול מהכול, ויש חבילות של תפאורה וציוד משלים בלבד. בכל מקרה, בתקציב שמותאם אליכם.`
+- Label `--gold`: `חבילות`; h2 Bellefair `clamp(38px, 5vw, 72px)`: `מהכול כלול / ועד תפאורה בלבד.`; 24px below, lead (20px, `--ivory` 85%, max 46ch): `יש חבילות שכוללות הכול מהכול, ויש חבילות של תפאורה וציוד משלים בלבד. בכל מקרה, בתקציב שמותאם אליכם.`
 - 56px below: a three-row menu. Each row: 1px gold-30% rule above (and under the last), padding-block 28px, grid: name (Bellefair `clamp(30px, 3.4vw, 48px)`, `--ivory`) in a 4-of-8 column, description (18px, `--ivory` 85%) in the other 4. Mobile: name above description.
   1. `פינת טקס` / `במה, ספה ותפאורת טקס. לחינה, להפרשת חלה או לכיסא כלה.`
   2. `תפאורה וציוד` / `שער, מבואה, שולחנות מתוקים וריהוט. את השאר אתם מביאים.`
   3. `הפקה מלאה` / `תפאורה מפוארת, עמדת טקס, עוגיות ופיצוחים, תלבושות וכניסה חגיגית באפריון.`
 - 32px below: label `--ivory` 70%: `המחיר נקבע לפי התאריך, המקום וגודל האירוע.` 24px below: primary button `קבלו הצעה בוואטסאפ`.
-- Images (columns 10–12, top-aligned with the h2): `white-set` (aspect 1/1, `.rise`, alt `תפאורה לבנה קלאסית עם קשתות מוארות וספה`), 8px below it a label `--gold`: `תפאורה קלאסית לבנה`; 40px below, `bride-chair` (aspect 4/3, `.rise`, alt `כיסא כלה לבן מול קשתות מוארות`), label `כיסא כלה`.
+- Images (columns 10–12, top-aligned with the h2): `stage-wide` (aspect 1/1, `.rise`, alt `במת טקס מרוקאית עם ספה מוזהבת, כדים ושטיחים`), 8px below it a label `--gold`: `פינת טקס מרוקאית`; 40px below, `white-set` (aspect 4/3, `.rise`, alt `תפאורה לבנה קלאסית עם קשתות מוארות וספה`), label `תפאורה לבנה קלאסית, גם לכיסא כלה`.
 - Mobile: text, menu, note, button, then the two images side by side (12px gap) with their labels.
 
 ### 5. Gallery `#gallery` (ivory)
@@ -130,8 +130,8 @@ Background `--ivory-2`. Desktop: h2 (Bellefair `clamp(36px, 4.6vw, 72px)`, `--he
 Background `--henna`, text `--ivory`. Desktop: text in columns 1–6, vertically centred; the form "door" in columns 8–12.
 - Label `--gold`: `יוצאים לדרך`; h2 Bellefair `clamp(48px, 7vw, 112px)`: `מתי החינה / שלכם?`; 24px below, lead (`--ivory` 85%, max 36ch): `שולחים לרוני תאריך ומקום, ומקבלים הצעה מסודרת.`
 - 40px below: rows with a 1px gold-30% rule above each (and under the last), padding-block 16px, label (`--gold`) above value (Heebo 400 20px, links): `וואטסאפ וטלפון` / `052-928-2992` · `אינסטגרם` / `@zraret_henna`.
-- The door: an ivory form panel shaped like the arch. Build it as two stacked blocks with no gap: a cap (`width:100%; aspect-ratio: 300/184; background: var(--ivory); clip-path: url(#arch-top)`) holding only a centred 24px khatam star in `--gold` at its lower third; then a body (`background: var(--ivory); padding: 8px 40px 40px`, 24px side padding on mobile) with the form. Text in the panel is `--ink`.
-  - Form title, Bellefair 32px `--henna`, centred: `פרטי האירוע`
+- The door: an ivory form panel shaped like the arch. Build it as two stacked blocks with no gap: a cap (`width:100%; aspect-ratio: 300/184; background: var(--ivory); clip-path: url(#arch-top)`) holding a centred 24px khatam star in `--gold` at mid-height and the form title at its bottom; then a body (`background: var(--ivory); padding: 8px 40px 40px`, 24px side padding on mobile) with the form. Text in the panel is `--ink`.
+  - Form title (inside the cap), Bellefair 32px `--henna`, centred: `פרטי האירוע`
   - Fields, label (Heebo 500 14px `--ink-2`) above input; inputs 52px high, `--ivory` bg, 1px `--rule` border (focus: 2px `--gold-deep` outline, offset 2px), Heebo 400 17px. Two per row on desktop, one per row on mobile, 16px gaps:
     - `שם` (text, required, autocomplete name). Error: `נשמח לדעת איך קוראים לכם`.
     - `תאריך האירוע` (type date)

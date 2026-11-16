@@ -49,6 +49,7 @@ body {
 body.menu-open { overflow: hidden; }
 
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+p, .step__text { text-wrap: pretty; }
 ul, ol { padding: 0; list-style: none; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
@@ -226,22 +227,25 @@ button { font: inherit; color: inherit; }
 .pos-45 img { object-position: center 45%; }
 .pos-55 img { object-position: center 55%; }
 
-/* Signature motion: the unveil */
-html.js .unveil {
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.2s var(--ease);
-}
+/* Signature motion: the unveil
+   The clip is applied to the image layer inside the wrapper so the wrapper
+   itself stays measurable by IntersectionObserver (a fully clipped target
+   never reports an intersection). Visually identical to clipping the wrapper. */
+html.js .unveil { background: transparent; }
 html.js .unveil img {
+  clip-path: inset(100% 0 0 0);
   transform: scale(1.08);
-  transition: transform 1.6s var(--ease);
+  transition: clip-path 1.2s var(--ease), transform 1.6s var(--ease);
 }
-html.js .unveil.is-in { clip-path: inset(0 0 0 0); }
-html.js .unveil.is-in img { transform: scale(1); }
+html.js .unveil.is-in img {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}
 
 @media (hover: hover) and (min-width: 1024px) {
   html.js .piece:hover .unveil.is-in img {
     transform: scale(1.03);
-    transition-duration: 1.2s;
+    transition: clip-path 1.2s var(--ease), transform 1.2s var(--ease);
   }
 }
 
@@ -393,7 +397,8 @@ html.js .unveil.is-in img { transform: scale(1); }
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: 24px;
     align-items: center;
-    padding-block: 56px 120px;
+    /* 120px below the main image, plus room for the overlapping detail image and its caption */
+    padding-block: 56px 160px;
   }
   .hero__text { grid-column: 1 / 7; }
   .hero__actions {
@@ -569,6 +574,9 @@ html.js .unveil.is-in img { transform: scale(1); }
 .story__img { grid-column: 1; grid-row: 2; max-width: 440px; }
 .story__inset { grid-column: 2; grid-row: 2; max-width: 200px; }
 .story .body-copy { font-size: 19px; }
+.story__text { container-type: inline-size; }
+/* the spec clamp, capped so "האבנים נבחרות בבורסה," never wraps inside columns 6–10 */
+.story__text .h-lg { font-size: min(clamp(36px, 4.6vw, 72px), 100cqi / 9.4); }
 
 @media (min-width: 1024px) {
   .story__grid {
@@ -817,6 +825,7 @@ a.contact__value:hover { color: var(--accent); }
 .site-footer__row > * { opacity: .7; font-family: var(--f-text); }
 .site-footer__row .site-footer__fine { font-family: var(--f-latin); font-style: italic; }
 .site-footer__row a {
+  margin-block: -10px;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -867,8 +876,7 @@ a.contact__value:hover { color: var(--accent); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0s !important; animation: none !important; }
-  html.js .unveil { clip-path: none; }
   html.js .unveil img,
-  html.js .piece:hover .unveil.is-in img { transform: none; }
+  html.js .piece:hover .unveil.is-in img { clip-path: none; transform: none; }
   .sticky-bar { transform: none; }
 }
